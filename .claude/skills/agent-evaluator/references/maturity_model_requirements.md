@@ -47,9 +47,96 @@ Full regulatory compliance
 Predictive monitoring
 🔍 Level Details (Cumulative)
 🔴 Level 0: BEGINNER — Basic LLM Integration (5 Practices)
+Typical Use: Internal chatbots, content drafts, code assistance prototypes
+
+Characteristics
+Single LLM, single task pattern
+No explicit planning or reasoning traces
+Context limited to single conversation turn
+Manual or no evaluation process
+Basic input validation only
+No persistent memory
+Direct API calls without orchestration
+Required Practices
+(tick) Set explicit max_output_tokens limits
+(tick) Basic input/output validation
+(tick) Log all LLM calls for debugging
+(tick) Manual review of outputs
+(tick) Basic error handling
+Risk Profile
+
+Low-stakes internal use only; not suitable for customer-facing or regulated domains.
+
 🟡 Level 1: FOUNDATIONAL — Production-Ready Single Agent (19 Practices = 5 + 14 new)
+Typical Use: Customer support agents, document processing, workflow automation
+
+New Characteristics
+Explicit planning step before execution
+Tool usage with validated schemas
+Session-based memory (within conversation)
+Automated evaluation pipeline
+Cost tracking and alerts
+Basic observability (logging, metrics)
+Guardrails for known risks
+New Practices (in addition to L0)
+(tick) Require explicit planning with CoT reasoning
+(tick) Design tools with clear names and validated schemas
+(tick) Manage context with summarization
+(tick) Maintain statistically valid test datasets
+(tick) Run evaluations with statistical rigor
+(tick) Track costs with real-time monitoring
+(tick) Implement layered guardrails
+(tick) Handle tool failures with retry
+Risk Profile
+
+Suitable for production with human review of edge cases; moderate-risk applications.
+
 🟢 Level 2: ADVANCED — Sophisticated Production Agent (35 Practices = 19 + 16 new)
+Typical Use: Enterprise assistants, complex research agents, multi-step workflow orchestration
+
+New Characteristics
+Multi-step task decomposition
+Hybrid retrieval (RAG) with reranking
+Persistent memory across sessions
+Hallucination detection and prevention
+Model routing for cost optimization
+Comprehensive observability with feedback loops
+Human-in-the-loop for high-risk decisions
+Automated release gating
+New Practices (in addition to L1)
+(tick) Decompose tasks and validate feasibility
+(tick) Use hybrid retrieval with reranking
+(tick) Implement persistent memory for critical facts
+(tick) Implement source grounding and attribution
+(tick) Monitor uncertainty signals for hallucination
+(tick) Route tasks by complexity to appropriate models
+(tick) Cross-validate critical decisions with ensemble
+(tick) Gate releases on automated evaluation
+Risk Profile
+
+Production-ready for complex, customer-facing applications; suitable for most commercial use.
+
 🟣 Level 3: AUTONOMOUS — Agentic Network (39 Practices = 35 + 4 new)
+Typical Use: Autonomous research networks, enterprise process automation, regulated industry applications
+
+New Characteristics
+Multi-agent orchestration and delegation
+Self-reflection and autonomous improvement
+Cross-agent shared memory and learning
+Real-time adaptation based on feedback
+Full regulatory compliance (EU AI Act, ISO 42001)
+Predictive monitoring and self-healing
+Autonomous task routing across agent network
+Minimal human intervention required
+New Practices (in addition to L2)
+(tick) Apply domain-appropriate severity thresholds
+(tick) Establish continuous feedback loops from production
+(tick) Run agents under named users (no service accounts); log all actions to incident management
+(tick) Include safety in evaluation and red-teaming
+Risk Profile
+
+Enterprise-grade for regulated industries; requires robust governance framework.
+
 📋 Chapter 2: Best Practices Checklist
 39 practices across 9 categories. Each practice shows its minimum maturity level requirement.
 
@@ -343,6 +430,10 @@ Weekly production review; monthly improvements
 
 
 
+
+
+
+
 L2
 Implement human oversight for high-risk
 
@@ -370,25 +461,3 @@ Ensure agent prevents harmful actions even when users attempt them
 MITRE ATLAS: Playbooks for prompt injection, exfiltration, collusion.
 
 ≥10% safety tests; quarterly red-teaming
-
-📚 Chapter 3: References
-Academic Research
-ReAct (Yao et al., 2023): Synergizing Reasoning and Acting
-Chain-of-Thought (Wei et al., 2022): Emergent abilities
-ADaPT (Prasad et al., NAACL 2024): Recursive decomposition
-Lost in the Middle (Liu et al., TACL 2024): Context position
-Hybrid-LLM (ICLR 2024): Cost-efficient routing
-FrugalGPT (TMLR 2024): Adaptive LLM selection
-RouteLLM (LMSYS, 2024): Preference-based routing
-SelfCheckGPT (Manakul, 2023): Consistency detection
-Reflexion (Shinn, 2023): Verbal reinforcement learning
-ACM Hallucination Survey (2024): Taxonomy
-MemGPT (2024): Virtual context management
-Regulatory & Security Frameworks
-EU AI Act (2024/1689): High-risk oversight
-NIST AI RMF (2024): GenAI risk management
-ISO 42001: AI management systems
-OWASP Top 10 LLM (2025): Security threats
-MITRE ATLAS (2024): AI red-teaming playbooks
-IBM Data Breach (2025): AI access findings
-Obsidian Security (2025): Over-permissioning study
