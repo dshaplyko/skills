@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SLB BA Agents — Maturity Assessment Report</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1f2937;
+    --muted: #6b7280;
+    --accent: #0b5fff;
+    --border: #e5e7eb;
+    --l0: #ef4444;
+    --l1: #f59e0b;
+    --l2: #10b981;
+    --l3: #8b5cf6;
+    --soft: #f9fafb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+    line-height: 1.55;
+  }
+  header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+  }
+  header h1 { margin: 0 0 6px; font-size: 28px; }
+  header .meta { color: var(--muted); font-size: 14px; }
+  h2 {
+    margin-top: 40px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+    font-size: 20px;
+  }
+  h3 { font-size: 16px; margin-top: 24px; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 20px 0 12px;
+  }
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    background: var(--soft);
+  }
+  .card .num { font-size: 22px; font-weight: 600; }
+  .card .lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .b-l0 { background: var(--l0); }
+  .b-l1 { background: var(--l1); }
+  .b-l2 { background: var(--l2); }
+  .b-l3 { background: var(--l3); }
+  .b-na { background: var(--muted); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--soft);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  tr:hover td { background: #fafbfc; }
+  ul { margin: 6px 0 6px 20px; }
+  li { margin: 3px 0; }
+  .legend {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .legend .badge { margin-right: 4px; }
+  .callout {
+    background: #f0f7ff;
+    border-left: 4px solid var(--accent);
+    padding: 12px 14px;
+    border-radius: 4px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .callout.warn {
+    background: #fff8eb;
+    border-left-color: var(--l1);
+  }
+  .progress-bar {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--l1), var(--l2));
+  }
+  footer {
+    margin-top: 50px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .agent-name { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SLB BA Agents — Maturity Assessment</h1>
+  <div class="meta">
+    Subject: <code>SLB/agents/</code> orchestrator + 5 sub-agents &nbsp;·&nbsp;
+    Framework: Agent Maturity Model (Ihar Bylitski, Feb 17 2026) &nbsp;·&nbsp;
+    Date: 2026-04-28
+  </div>
+</header>
+
+<section>
+  <h2>Executive Summary</h2>
+  <p>
+    The SLB BA agent suite sits between <strong>Level 1 (Foundational)</strong> and
+    <strong>Level 2 (Advanced)</strong>. The orchestrator and the two most critical
+    sub-agents (<span class="agent-name">req_creator</span>,
+    <span class="agent-name">req_publisher</span>) are clearly L2. The validator,
+    user-stories creator, and artifact cleaner are upper-L1. With three targeted
+    improvements we can lift the entire suite to a clean L2.
+  </p>
+
+  <div class="summary-grid">
+    <div class="card">
+      <div class="num"><span class="badge b-l2">L2</span></div>
+      <div class="lbl">Suite-level maturity</div>
+    </div>
+    <div class="card">
+      <div class="num">3 / 6</div>
+      <div class="lbl">Agents at L2</div>
+    </div>
+    <div class="card">
+      <div class="num">3 / 6</div>
+      <div class="lbl">Agents at L1</div>
+    </div>
+    <div class="card">
+      <div class="num">~75%</div>
+      <div class="lbl">L2 practices covered</div>
+      <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Scoring caveat:</strong> Token-cost monitoring and statistical evaluation
+    datasets are platform-side concerns (EliteA + ongoing client review on a sandbox
+    with limited tickets). Those practices are scored as <em>not applicable at the
+    agent layer</em> rather than as gaps.
+  </div>
+</section>
+
+<section>
+  <h2>Per-Agent Scorecard</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%">Agent</th>
+        <th style="width: 10%">Level</th>
+        <th>Strengths</th>
+        <th>Gaps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="agent-name">orchestrator.md</span></td>
+        <td><span class="badge b-l2">L2</span></td>
+        <td>
+          <ul>
+            <li>Hard human-in-the-loop gate before publish</li>
+            <li>Explicit no-auto-chaining rule between capabilities</li>
+            <li>Layered guardrails + retry policy (5x)</li>
+            <li>Comprehensive error-handling matrix (37 rows)</li>
+            <li>Persistent artifact memory via SLB store; session-fallback logic</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>No explicit context-summarisation rule for long sessions</li>
+            <li>No reflection / self-improvement loop (L3)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="agent-name">req_creator.md</span></td>
+        <td><span class="badge b-l2">L2</span></td>
+        <td>
+          <ul>
+            <li>Structured CoT decomposition (feature inventory → grouping → granularity → overlap → coverage)</li>
+            <li>RAG-like backlog similarity check</li>
+            <li>Self-consistency validation (title ↔ description ↔ AC)</li>
+            <li>Completeness score (0–100) and AI-Draft provenance tag</li>
+            <li>Vision-ticket context lookup</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Silent fallback when similarity check returns nothing — should surface to user</li>
+            <li>No prompt-injection sanitisation on ticket text / attachments</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="agent-name">req_publisher.md</span></td>
+        <td><span class="badge b-l2">L2</span></td>
+        <td>
+          <ul>
+            <li>Mandatory post-write verification (re-reads created item)</li>
+            <li>5x retry; failed parent-link surfaces as warning, not hard failure</li>
+            <li>Item-type detection (Requirement vs User Story)</li>
+            <li>Markdown → HTML conversion before write</li>
+            <li>Strict "never fabricate" + disclaimer footer rules</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>No drift check between latest artifact and any previously published version</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="agent-name">req_validator.md</span></td>
+        <td><span class="badge b-l1">L1+</span></td>
+        <td>
+          <ul>
+            <li>Loads ISO/IEC 25010 + 25059 standard at runtime (light RAG)</li>
+            <li>Structured rubric, capped output (5 questions, top-3 gaps)</li>
+            <li>Cites the specific characteristic per question</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Output is not anchored — gap claims should cite the exact AC/sentence flagged</li>
+            <li>No uncertainty signal when input is sparse</li>
+            <li>No freshness SLA on the ISO/IEC reference file</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="agent-name">us_stories_creator.md</span></td>
+        <td><span class="badge b-l1">L1</span></td>
+        <td>
+          <ul>
+            <li>BE / FE separation, scenario-based AC (Given/When/Then)</li>
+            <li>Retries + structured failure reporting</li>
+            <li>AI-Draft tag on every story</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Missing coverage map (parent Requirement AC → story scenarios)</li>
+            <li>No overlap detection between BE / FE stories</li>
+            <li>No completeness score</li>
+            <li>No self-consistency validation step (parity gap with req_creator)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="agent-name">artifact_cleaner.md</span></td>
+        <td><span class="badge b-l1">L1</span></td>
+        <td>
+          <ul>
+            <li>Status-gated deletion (only PUBLISH_STATUS = success)</li>
+            <li>Pre-delete existence check; 3x retry</li>
+            <li>Structured cleanup summary returned to orchestrator</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>No additional gaps — scope is narrow and L1 is appropriate</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <span class="badge b-l0">L0</span> Beginner &nbsp;
+    <span class="badge b-l1">L1</span> Foundational &nbsp;
+    <span class="badge b-l2">L2</span> Advanced &nbsp;
+    <span class="badge b-l3">L3</span> Autonomous
+  </div>
+</section>
+
+<section>
+  <h2>Coverage Against the 39-Practice Checklist</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 28%">Category</th>
+        <th style="width: 14%">Coverage</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. Token economics &amp; efficiency</td>
+        <td><span class="badge b-l2">High</span></td>
+        <td>Output caps everywhere (≤5 reqs, ≤4 stories, ≤5 questions). Cost monitoring handled by EliteA platform.</td>
+      </tr>
+      <tr>
+        <td>2. Planning &amp; reasoning</td>
+        <td><span class="badge b-l2">High</span></td>
+        <td>Explicit CoT plans, recursive decomposition, closed-loop revisions via Capability 3.</td>
+      </tr>
+      <tr>
+        <td>3. Evaluation framework</td>
+        <td><span class="badge b-na">N/A</span></td>
+        <td>Performed off-platform via sandbox + client review — out of scope for agent specs.</td>
+      </tr>
+      <tr>
+        <td>4. Hallucination prevention</td>
+        <td><span class="badge b-l1">Medium</span></td>
+        <td>"Never fabricate" rules and AI-Draft tag are strong; missing per-claim citation in validator output.</td>
+      </tr>
+      <tr>
+        <td>5. Tool usage &amp; function calling</td>
+        <td><span class="badge b-l2">High</span></td>
+        <td>Clear tool schemas, retry policy, structured failure reasons across all agents.</td>
+      </tr>
+      <tr>
+        <td>6. Conversation &amp; memory</td>
+        <td><span class="badge b-l2">High</span></td>
+        <td>Persistent artifact store as external memory; multi-turn fallbacks via list_files / read_file.</td>
+      </tr>
+      <tr>
+        <td>7. RAG &amp; retrieval</td>
+        <td><span class="badge b-l1">Medium</span></td>
+        <td>Backlog similarity + ISO/IEC reference loading present; no embedding freshness SLA defined.</td>
+      </tr>
+      <tr>
+        <td>8. Observability &amp; monitoring</td>
+        <td><span class="badge b-na">N/A (platform)</span></td>
+        <td>EliteA provides token + run telemetry. Agent-level structured returns (STATUS / ERROR_STEP / ERROR_DETAIL) are present.</td>
+      </tr>
+      <tr>
+        <td>9. Safety, guardrails &amp; compliance</td>
+        <td><span class="badge b-l2">High</span></td>
+        <td>HITL publish gate, no-auto-chaining rule, post-write verification, AI-Draft &amp; Pending Review tags for downstream review.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Recommendations</h2>
+
+  <h3>To reach a clean Level 2 across the suite</h3>
+  <ol>
+    <li>
+      <strong>Bring <span class="agent-name">us_stories_creator</span> to parity with
+      <span class="agent-name">req_creator</span></strong> — add a coverage map (parent
+      Requirement AC → story scenarios), overlap detection between BE/FE stories,
+      a completeness score, and a self-consistency validation step.
+    </li>
+    <li>
+      <strong>Anchor <span class="agent-name">req_validator</span> output</strong> — every
+      gap claim should cite the exact sentence/AC item it flags, and the agent should
+      raise an uncertainty signal when input content is sparse.
+    </li>
+    <li>
+      <strong>Surface RAG misses to the user</strong> — currently
+      <code>SIMILARITY_CHECK: skipped</code> is silent in
+      <span class="agent-name">req_creator</span>; the orchestrator should display
+      this state so the user knows backlog cross-referencing did not run.
+    </li>
+  </ol>
+
+  <h3>To reach Level 3 (autonomous)</h3>
+  <ol>
+    <li>Add a reflection / learning loop — capture which completeness-score bands led to user-driven modifications, feed back into the creator's prompt.</li>
+    <li>Apply domain-aware severity thresholds in the validator (e.g., faithfulness floor ≥0.95 for Security &amp; Safety characteristics before allowing publish).</li>
+    <li>Cross-validate critical decompositions with an ensemble pass (panel-of-three for the publish gate).</li>
+    <li>Add red-team coverage — sanitisation pass on ADO ticket text + attachments to defend against prompt injection through ingested content.</li>
+  </ol>
+
+  <div class="callout warn">
+    <strong>Housekeeping done:</strong> the empty <span class="agent-name">test_cases_creator.md</span>
+    file has been removed from the agent suite as it is not part of the current scope.
+  </div>
+</section>
+
+<footer>
+  Generated 2026-04-28 · Source: <code>SLB/agents/</code> · Framework reference: Agent Maturity Model v1 (Feb 2026)
+</footer>
+
+</body>
+</html>
