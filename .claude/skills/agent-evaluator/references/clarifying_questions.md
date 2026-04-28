@@ -57,7 +57,7 @@ Ask:
 
 Ask up front, before reading the agents in depth:
 
-- **Suite name** — what should the report be titled? (e.g. "SLB BA Agents", "Philips QA Suite")
+- **Suite name** — what should the report be titled? (e.g. "<Client> BA Agents", "<Client> QA Suite")
 - **Target path** — confirm the folder / files being assessed.
 - **Author** — whose name goes on the report?
 - **Anchor agents** — if the suite has many agents, which one or two are doing the load-bearing work? (Used in the executive-summary rollup.)

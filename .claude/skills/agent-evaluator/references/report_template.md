@@ -78,7 +78,7 @@
 
 ## How to use this template
 
-1. **Copy** this file to the target client folder (e.g. `philips/agents/maturity_assessment.md`).
+1. **Copy** this file to the target client folder (e.g. `<client>/agents/maturity_assessment.md`).
 2. **Fill placeholders** — every `{{LIKE_THIS}}` token is a slot; remove sections that don't apply.
 3. **Score per agent** using the rubric below before filling the scorecard:
    - **L0** — single LLM call, no planning, no tool schemas, no retries.

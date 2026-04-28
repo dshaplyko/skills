@@ -25,11 +25,11 @@ Follow these phases in order. Don't skip the clarifying-questions phase — it i
 
 Detect how the user supplied the agents:
 
-- **Path mode** (most common in this repo) — the user names a folder (e.g. `SLB/agents/`, `philips/ba_agent/`) or a list of files. Use Glob / Read / Bash `ls` to enumerate. Look for `*.md` (prompt bodies), `*_agent.yml` / `master.yml` (pipelines), and any `agents/` subfolder. Read every file fully — partial reads cause missed gaps.
+- **Path mode** (most common in this repo) — the user names a folder (e.g. `<client>/agents/`, `<client>/ba_agent/`) or a list of files. Use Glob / Read / Bash `ls` to enumerate. Look for `*.md` (prompt bodies), `*_agent.yml` / `master.yml` (pipelines), and any `agents/` subfolder. Read every file fully — partial reads cause missed gaps.
 - **Pasted mode** — the user pastes the agent definition inline. Treat the pasted blocks as the spec and skip filesystem walking.
 - **Mixed** — a mix of paths and pasted snippets. Read paths, then append pasted content as additional agents.
 
-Present the list of agents you found back to the user in one short message ("Found 6 agents in `SLB/agents/`: orchestrator, req_creator, req_publisher, req_validator, us_stories_creator, artifact_cleaner — proceeding."). This catches scope mistakes before the slow steps.
+Present the list of agents you found back to the user in one short message ("Found 6 agents in `<client>/agents/`: orchestrator, req_creator, req_publisher, req_validator, us_stories_creator, artifact_cleaner — proceeding."). This catches scope mistakes before the slow steps.
 
 ### Phase 2 — Read the rubric and requirements
 
@@ -84,7 +84,7 @@ Output a single self-contained HTML file. **Always** use the styling from `refer
 
 The structural skeleton (with placeholders) is in `references/report_template.md`; the worked example is in `references/example_report.html`. Use the example as your CSS / markup reference and the template as your section checklist.
 
-**Output path**: write the report to the **repo root** as `<suite_slug>_maturity_assessment.html` (e.g. `slb_ba_agents_maturity_assessment.html`). Tell the user the absolute path when you're done.
+**Output path**: write the report to the **repo root** as `<suite_slug>_maturity_assessment.html` (e.g. `<client>_ba_agents_maturity_assessment.html`). Tell the user the absolute path when you're done.
 
 ### Phase 7 — Hand off
 
@@ -120,4 +120,4 @@ The example report (`references/example_report.html`) is the gold standard for t
 - `references/scoring_rubric.md` — how to translate spec content into a level.
 - `references/clarifying_questions.md` — what to ask the user, why each question matters, and how to record answers.
 - `references/report_template.md` — section-by-section skeleton with placeholders.
-- `references/example_report.html` — worked HTML example (SLB BA agents). Reuse the `<style>` block verbatim.
+- `references/example_report.html` — worked HTML example (anonymized BA agents suite). Reuse the `<style>` block verbatim.
