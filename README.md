@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/hero.svg" alt="Claude Code Skills" width="880">
+</p>
+
 # Skills
 
 A personal collection of [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills) I've built and use.

@@ -1,0 +1,129 @@
+<svg width="880" height="175" viewBox="0 0 880 175" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <defs>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="11" cy="11" r="0.7" fill="#1a2540"/>
+    </pattern>
+    <radialGradient id="leftGlow" cx="15%" cy="50%" r="38%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0b0f1e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rightGlow" cx="85%" cy="50%" r="32%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#0b0f1e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="175" rx="10" fill="#0b0f1e"/>
+  <rect width="880" height="175" rx="10" fill="url(#dots)"/>
+  <rect width="880" height="175" rx="10" fill="url(#leftGlow)"/>
+  <rect width="880" height="175" rx="10" fill="url(#rightGlow)"/>
+
+  <!-- LEFT: Icon box glow -->
+  <rect x="18" y="18" width="116" height="139" rx="11" fill="#a78bfa" opacity="0.05"/>
+  <!-- Box -->
+  <rect x="20" y="20" width="112" height="135" rx="9" fill="#131b30" stroke="#1d2c46" stroke-width="1.5"/>
+
+  <!-- Corner bracket decorations -->
+  <path d="M 20 33 L 20 20 L 33 20" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 132 33 L 132 20 L 119 20" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 20 142 L 20 155 L 33 155" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 132 142 L 132 155 L 119 155" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Stacked skill cards -->
+  <rect x="44" y="62" width="50" height="14" rx="3" fill="#0d1a2e" stroke="#a78bfa" stroke-width="1" opacity="0.45"/>
+  <rect x="40" y="78" width="58" height="14" rx="3" fill="#0d1a2e" stroke="#a78bfa" stroke-width="1" opacity="0.7"/>
+  <rect x="36" y="94" width="66" height="16" rx="3" fill="#131b30" stroke="#a78bfa" stroke-width="1.2"/>
+
+  <!-- "/" inside top card -->
+  <text x="69" y="106"
+    text-anchor="middle"
+    fill="#a78bfa"
+    font-size="13"
+    font-weight="700"
+    font-family="'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace">SKILL</text>
+
+  <!-- "SKILL.md" label below -->
+  <text x="69" y="141"
+    text-anchor="middle"
+    fill="#2d4a68"
+    font-size="11"
+    font-family="'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace">SKILL.md</text>
+
+  <!-- Decorative dots near separator -->
+  <circle cx="149" cy="29" r="2.5" fill="#a78bfa" opacity="0.65"/>
+  <circle cx="157" cy="46" r="1.7" fill="#a78bfa" opacity="0.38"/>
+  <circle cx="144" cy="57" r="1.4" fill="#3b82f6" opacity="0.48"/>
+  <circle cx="153" cy="70" r="1.0" fill="#a78bfa" opacity="0.28"/>
+  <circle cx="150" cy="139" r="1.6" fill="#a78bfa" opacity="0.32"/>
+  <circle cx="156" cy="126" r="1.0" fill="#3b82f6" opacity="0.30"/>
+
+  <!-- Separator left -->
+  <line x1="163" y1="14" x2="163" y2="161" stroke="#1d2c46" stroke-width="1"/>
+
+  <!-- CENTER: Title -->
+  <text x="184" y="69"
+    fill="#e8edf5"
+    font-size="33"
+    font-weight="800"
+    letter-spacing="-0.3">Claude Code Skills</text>
+
+  <!-- Subtitle -->
+  <text x="184" y="93"
+    fill="#6a8099"
+    font-size="13.5">A personal collection of skills I've built and use</text>
+
+  <!-- Badge pill -->
+  <rect x="184" y="109" width="217" height="26" rx="13"
+    fill="none" stroke="#a78bfa" stroke-width="1.2" opacity="0.75"/>
+  <text x="292.5" y="126.5"
+    text-anchor="middle"
+    fill="#a78bfa"
+    font-size="9.5"
+    font-weight="600"
+    letter-spacing="1.6">PERSONAL SKILLS LIBRARY</text>
+
+  <!-- Bottom caption -->
+  <text x="405" y="165"
+    text-anchor="middle"
+    fill="#2d4a68"
+    font-size="11"
+    font-style="italic">Auto-discovered by Claude Code — drop in a folder, invoke by name.</text>
+
+  <!-- Separator right -->
+  <line x1="648" y1="14" x2="648" y2="161" stroke="#1d2c46" stroke-width="1"/>
+
+  <!-- RIGHT: Built For label -->
+  <text x="664" y="40"
+    fill="#2d4a68"
+    font-size="9"
+    font-weight="600"
+    letter-spacing="1.8">BUILT FOR</text>
+
+  <!-- Claude Code -->
+  <circle cx="668" cy="59" r="6" fill="#d97757"/>
+  <text x="668" y="59" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="8.5" font-weight="700" font-family="'SF Mono', Consolas, monospace">A</text>
+  <text x="681" y="59" dominant-baseline="central" fill="#b8cad8" font-size="12.5">Claude Code</text>
+
+  <!-- ELITEA -->
+  <circle cx="668" cy="81" r="6" fill="#059669"/>
+  <text x="668" y="81" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="8.5" font-weight="700" font-family="'SF Mono', Consolas, monospace">E</text>
+  <text x="681" y="81" dominant-baseline="central" fill="#b8cad8" font-size="12.5">ELITEA</text>
+
+  <!-- Postman -->
+  <circle cx="668" cy="103" r="6" fill="#ff6c37"/>
+  <text x="668" y="103" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="8.5" font-weight="700" font-family="'SF Mono', Consolas, monospace">P</text>
+  <text x="681" y="103" dominant-baseline="central" fill="#b8cad8" font-size="12.5">Postman</text>
+
+  <!-- Pandoc -->
+  <circle cx="668" cy="125" r="6" fill="#1a2e4a" stroke="#4a9eff" stroke-width="1.3"/>
+  <text x="668" y="125" text-anchor="middle" dominant-baseline="central" fill="#4a9eff" font-size="8.5" font-weight="700" font-family="'SF Mono', Consolas, monospace">D</text>
+  <text x="681" y="125" dominant-baseline="central" fill="#b8cad8" font-size="12.5">Pandoc</text>
+
+  <!-- Markdown -->
+  <circle cx="668" cy="147" r="6" fill="#7c3aed"/>
+  <text x="668" y="147" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="8.5" font-weight="700" font-family="'SF Mono', Consolas, monospace">M</text>
+  <text x="681" y="147" dominant-baseline="central" fill="#b8cad8" font-size="12.5">Markdown</text>
+
+</svg>
